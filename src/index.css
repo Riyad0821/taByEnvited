@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+p{
+width: 321px;
+height: 36px;
+font-family: 'Helvetica';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 18px;
+text-align: center;
+color: #4F4F4F;
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+}
