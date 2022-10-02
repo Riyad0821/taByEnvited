@@ -1,4 +1,3 @@
-import { Formik } from "formik";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button";
@@ -6,20 +5,22 @@ import Input from "../../components/Input";
 import Label from "../../components/Label";
 
 const CreateEvent = () => {
-  const [data, setData] = useState({
+  const [eventData, setEventData] = useState({
     eventName: "",
     hostName: "",
-    startDate: "",
-    endDate: "",
+    eventStartDate: "",
+    eventEndDate: "",
     location: "",
     photo: "",
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log({ name }, { value });
+    setEventData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
-    setData({ ...data, [name]: value });
-    console.log(data);
+  const storeEventData = () => {
+    console.log("hi");
+    localStorage.setItem("eventData", JSON.stringify(eventData));
   };
   return (
     <div className="mx-auto w-10/12 mt-10">
@@ -39,7 +40,7 @@ const CreateEvent = () => {
               name="eventName"
               placeholderText="Enter event name"
               onChange={handleInputChange}
-              value={data.eventName}
+              value={eventData.eventName}
             />
           </div>
           <div className="mb-4">
@@ -50,7 +51,7 @@ const CreateEvent = () => {
               name="hostName"
               placeholderText="Enter host name"
               onChange={handleInputChange}
-              value={data.hostName}
+              value={eventData.hostName}
             />
           </div>
           <div className="mb-4">
@@ -60,7 +61,7 @@ const CreateEvent = () => {
               type="datetime-local"
               name="startDate"
               onChange={handleInputChange}
-              value={data.eventStart}
+              value={eventData.eventStartDate}
             />
           </div>
           <div className="mb-4">
@@ -70,7 +71,7 @@ const CreateEvent = () => {
               type="datetime-local"
               name="endDate"
               onChange={handleInputChange}
-              value={data.eventEnd}
+              value={eventData.eventEndDate}
             />
           </div>
           <div className="mb-4">
@@ -81,7 +82,7 @@ const CreateEvent = () => {
               name="location"
               placeholderText="Enter location"
               onChange={handleInputChange}
-              value={data.locationName}
+              value={eventData.location}
             />
           </div>
           <div className="mb-4">
@@ -92,11 +93,13 @@ const CreateEvent = () => {
               name="photo"
               accept="image/png, image/jpeg"
               onChange={handleInputChange}
-              value={data.photo}
+              value={eventData.photo}
             />
           </div>
           <div className="flex items-center justify-between">
-            <Button btnText="Next" />
+            <Link to={"/event"}>
+              <Button btnText="Next" onClick={storeEventData} />
+            </Link>
           </div>
         </form>
       </div>

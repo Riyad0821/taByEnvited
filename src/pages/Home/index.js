@@ -24,7 +24,7 @@ function Home() {
         src={landing_page_image}
         alt="Event Card"
       ></img>
-      <Link to={"/create-event"}>
+      <Link to={"/create"}>
         <Button
           btnText={
             <img
