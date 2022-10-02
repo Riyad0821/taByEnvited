@@ -18,7 +18,10 @@ function EventDetails() {
         src={birthday_cake}
         alt="Event Card"
       ></img>
-      <h2>{eventData?.eventName}</h2>
+      <h3>{eventData?.eventName}</h3>
+      <p>
+        Hosted by <span>{eventData?.hostName}</span>
+      </p>
       <Link to={"/"}>
         <Button btnText="Back" />
       </Link>
