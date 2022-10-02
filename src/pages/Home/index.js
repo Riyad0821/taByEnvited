@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button";
 import landing_page_image from "../../resource/landing_page_image.svg";
+import create_my_event from "../../resource/create_my_event.png";
 
 function Home() {
   return (
@@ -22,7 +24,17 @@ function Home() {
         src={landing_page_image}
         alt="Event Card"
       ></img>
-      <Button btnText="Create my event" />
+      <Link to={"/create-event"}>
+        <Button
+          btnText={
+            <img
+              className="object-contain mx-3 my-3"
+              src={create_my_event}
+              alt="Event Card"
+            ></img>
+          }
+        />
+      </Link>
     </div>
   );
 }
